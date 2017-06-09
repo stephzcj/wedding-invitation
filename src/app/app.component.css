@@ -1,20 +1,62 @@
 .first-bg{
-    background-image:url(../assets/images/home.png);
+    /*background-image:url(../assets/images/home.png);*/
+    background-color:darkgoldenrod;
     background-size:100% 100%;
     height:100%;
 }
+.li-spacing{
+    margin-bottom:25px;
+}
+.btn-group{
+    padding-top:20%;
+    font-size:180%;
+    position: absolute;
+    top: 50px;
+    right: 15px;
+    width: 45px;
+    z-index: 99999;
+}
+.btn-group .roundBtn {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;
+}
 
-.parent {
-            width:800px;
-            height:500px;
-            border:2px solid #000;
-            display:table-cell;
-            vertical-align:middle;
-            text-align: center;
-        }
-.child {
-            width:200px;
-            height:200px;
-            display:inline-block;
-            background-color: red;
-        }
+.btn-group .roundBtn span {
+    position: absolute;
+    color: brown;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    z-index: 9999;
+    font-size: 60%;
+}
+
+.btn-group .roundBtn img {
+    width: 100%;
+    height: 100%;
+}
+@-moz-keyframes rotation{
+from{ -moz-transform:rotate(0deg);}
+to{-moz-transform:rotate(360deg);}
+}
+@-webkit-keyframes rotation{
+0%{-webkit-transform:rotate(0deg);}
+100%{-webkit-transform:rotate(360deg);}
+}
+
+@keyframes rotation{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+.rotate {
+    -webkit-transform: rotate(360deg);
+    transform:rotate(360deg);
+    animation: rotation 3s linear infinite;
+    -moz-animation: rotation 3s linear infinite;
+    -webkit-animation: rotation 3s linear infinite;
+    -o-animation: rotation 3s linear infinite;
+}

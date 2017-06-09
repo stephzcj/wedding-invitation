@@ -1,21 +1,45 @@
-import { Component ,Input,trigger,state,style,animate,transition,keyframes} from '@angular/core';
-
+import { Component ,Input,trigger,style,animate,transition,keyframes,OnInit,ViewChild,ElementRef} from '@angular/core';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('flyIn', [
-      transition('void => *', [   
+      transition(':enter', [   
+        animate('0.5s ease-in-out', keyframes([ // 回弹的效果
+          style({opacity: 0, transform: 'translateY(-30%)', offset: 0}),
+          style({opacity: 1, transform: 'translateY(15px)',  offset: 0.3}),
+          style({opacity: 1, transform: 'translateY(0)',     offset: 1.0})
+        ]))
+      ]),
+      transition(':leave', [   
         animate('0.5s ease-out', keyframes([ // 回弹的效果
-          style({opacity: 0, transform: 'translateX(-100%)', offset: 0}),
-          style({opacity: 1, transform: 'translateX(15px)',  offset: 0.3}),
-          style({opacity: 1, transform: 'translateX(0)',     offset: 1.0})
+          style({opacity: 1, transform: 'translateY(0)',     offset: 0}),
+          style({opacity: 1, transform: 'translateY(15px)', offset: 0.7}),
+          style({opacity: 0, transform: 'translateY(-30%)',  offset: 1.0})
         ]))
       ])
     ])
    ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  @ViewChild("mycanvas") canvas:ElementRef;
+  openlist:boolean;
+  show:boolean;
+  constructor(private router: Router){
+    this.openlist=false;
+  }
+  ngOnInit():void{
+      
+  }
+  showLists():void{
+    this.openlist=!this.openlist;
+  }
+
+  direct2(destiny:string):void{
+    this.router.navigate([destiny]);
+
+  }
   
 }
