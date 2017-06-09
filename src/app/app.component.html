@@ -10,8 +10,8 @@
     <!--show and hide buttons list-->
       <div class="roundBtn" style="display:block;">
           <div [ngSwitch]="openlist">
-            <span *ngSwitchCase="true" class="glyphicon glyphicon-chevron-up li-spacing" (click)="showLists()"></span>
-            <span *ngSwitchCase="false" class="glyphicon glyphicon-chevron-down li-spacing" (click)="showLists()"></span>
+            <span *ngSwitchCase="true" class="glyphicon glyphicon-menu-up li-spacing" (click)="showLists()"></span>
+            <span *ngSwitchCase="false" class="glyphicon glyphicon-menu-down li-spacing" (click)="showLists()"></span>
           </div>
           <img class="rotate" src="../assets/images/round01.png">
       </div> 
@@ -26,6 +26,12 @@
         <li>
           <div class="roundBtn" style="display:block;">
             <span class="glyphicon glyphicon-picture li-spacing" (click)="direct2('exhibition')"></span>
+            <img class="rotate" src="../assets/images/round01.png">
+         </div>
+        </li>
+        <li>
+          <div class="roundBtn" style="display:block;">
+            <span class="glyphicon glyphicon-envelope li-spacing" (click)="direct2('invitation')"></span>
             <img class="rotate" src="../assets/images/round01.png">
          </div>
         </li>

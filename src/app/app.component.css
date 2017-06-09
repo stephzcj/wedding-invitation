@@ -40,8 +40,8 @@
     height: 100%;
 }
 @-moz-keyframes rotation{
-from{ -moz-transform:rotate(0deg);}
-to{-moz-transform:rotate(360deg);}
+0%{ -moz-transform:rotate(0deg);}
+100%{-moz-transform:rotate(360deg);}
 }
 @-webkit-keyframes rotation{
 0%{-webkit-transform:rotate(0deg);}
@@ -49,14 +49,14 @@ to{-moz-transform:rotate(360deg);}
 }
 
 @keyframes rotation{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
 }
 .rotate {
     -webkit-transform: rotate(360deg);
     transform:rotate(360deg);
-    animation: rotation 3s linear infinite;
-    -moz-animation: rotation 3s linear infinite;
-    -webkit-animation: rotation 3s linear infinite;
-    -o-animation: rotation 3s linear infinite;
+    animation: rotation 1s ease-in-out infinite;
+    -moz-animation: rotation 1s ease-in-out infinite;
+    -webkit-animation: rotation 1 ease-in-out infinite;
+    -o-animation: rotation 1s ease-in-out infinite;
 }
