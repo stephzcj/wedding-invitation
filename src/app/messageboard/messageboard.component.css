@@ -1,0 +1,11 @@
+.pan-title{
+    background-color: rgba(0,0,0,0.15);
+    color:white;
+    font-weight:bold;
+    font-size: 150%;
+    font-family: 幼圆;
+    text-align: center;
+}
+.input-class{
+    margin-bottom: 10px;
+}

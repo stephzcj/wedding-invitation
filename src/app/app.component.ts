@@ -24,14 +24,15 @@ import { Router } from '@angular/router';
    ]
 })
 export class AppComponent implements OnInit{
-  @ViewChild("mycanvas") canvas:ElementRef;
+  @ViewChild("musicontrol") musicontrol:ElementRef;
   openlist:boolean;
   show:boolean;
+  music:boolean;
   constructor(private router: Router){
     this.openlist=false;
+    this.music=true;
   }
   ngOnInit():void{
-      
   }
   showLists():void{
     this.openlist=!this.openlist;
@@ -39,7 +40,15 @@ export class AppComponent implements OnInit{
 
   direct2(destiny:string):void{
     this.router.navigate([destiny]);
-
   }
+  musicplay(mscctl:boolean):void{
+    if(mscctl){
+      this.musicontrol.nativeElement.pause();
+    }else{
+      this.musicontrol.nativeElement.play();
+    }
+    this.music=!this.music;
+  }
+
   
 }

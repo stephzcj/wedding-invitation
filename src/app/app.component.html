@@ -4,8 +4,12 @@
   <div class="btn-group"> 
     <!--music-->
       <div class="roundBtn" style="display:block;">
-           <span class="glyphicon glyphicon-music li-spacing"></span>
-           <img class="rotate" src="../assets/images/round01.png">
+          <div [ngSwitch]="music">
+            <span *ngSwitchCase="true" class="glyphicon glyphicon-music li-spacing" (click)="musicplay(music)"></span>
+            <img *ngSwitchCase="true" class="rotate" src="../assets/images/round01.png">
+            <span *ngSwitchCase="false" class="glyphicon glyphicon-play li-spacing" (click)="musicplay(music)"></span>
+            <img *ngSwitchCase="false" src="../assets/images/round01.png">
+          </div> 
       </div>
     <!--show and hide buttons list-->
       <div class="roundBtn" style="display:block;">
@@ -50,6 +54,10 @@
       </ul>
   </div>
   <div class="col-xs-12" style="height:100%;padding-right:0px;padding-left:0px;">
+    <audio #musicontrol autoplay="autoplay" loop="loop" >
+      <source src="../assets/audio/HLWILY.mp3" type="audio/mp3" />
+      Your browser does not support the audio element.
+    </audio>
     <router-outlet></router-outlet>
   </div>
   </div>
