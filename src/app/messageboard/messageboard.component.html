@@ -3,18 +3,18 @@
   <div class="panel-body">
     <div class="input-group input-class">
       <span class="input-group-addon" >姓&nbsp;&nbsp;&nbsp;名</span>
-      <input type="text" class="form-control" placeholder="输入你的名字">
+      <input #guestName type="text" class="form-control" placeholder="输入你的名字">
     </div>
     <div class="input-group input-class">
       <span class="input-group-addon" >携家人</span>
-      <input type="text" class="form-control" placeholder="输入出席人数">
+      <input #guestNum type="text" class="form-control" placeholder="输入出席人数">
       <span class="input-group-addon" >人</span>
     </div>
     <div class="input-group input-class">
       <span class="input-group-addon" >祝福语</span>
-      <input type="text" class="form-control" placeholder="为我们祝福吧">
+      <input #guestBless type="text" class="form-control" placeholder="为我们祝福吧">
     </div>
-      <button class="btn btn-default">签&nbsp;&nbsp;&nbsp;到</button>
+      <button class="btn btn-default" (click)="addData()">签&nbsp;&nbsp;&nbsp;到</button>
   </div>
 </div>
 <div #blessArea class="blessArea">
