@@ -22,6 +22,7 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
   blessX_px:number;//弹幕行内的间隙
   blessY_px:number;//弹幕行间的间隙
   blessFontSize:number;//弹幕字体大小
+  blessYavailable:number[];//可用行的行号数组
   ngOnInit(){
       this.canvasHeight= this.blessArea.nativeElement.offsetHeight;//把canvas大小设置成与父元素一致
       this.canvasWidth= this.blessArea.nativeElement.offsetWidth;  //该设定必须在绘图之前完成，因此放在init中
@@ -38,13 +39,15 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
       this.canvasContext.lineJoin="round";
       this.canvasContext.font = this.blessFontSize+"px NSimSun,STFangsong";
       this.blessWidth=this.canvasWidth;
+      this.blessYavailable=[];
       this.initDataNew();
       this.blessDrawNew();
   }
   /**
    * 用对象的方式来完成弹幕动画，比原方法灵活
-   * 存在的bug：当弹幕以一种节奏，而新增的数据在某种节奏下增加，会导致重叠
-   * 考虑用一个屏幕空间资源列表来解决，每当那行消失一个弹幕，就给池中增加一个可选行。
+   * 存在的bug：当弹幕以一种节奏消失，而新增的数据在某种节奏下增加，新增的弹幕会重叠
+   * 考虑用一个屏幕空间资源列表来解决，每当那行消失一个弹幕，就给池中增加一个可选行，数据结构用队列
+   * 但是这样又出现问题了，一波弹幕后长时间无弹幕，新打的弹幕还是可能在下方出现
    */
   blessDrawNew():void{
       this.canvasContext.clearRect(0,0,this.canvasWidth,this.canvasHeight);
@@ -53,35 +56,41 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
         //行与行之间的间隙偏移数
         let offsetNum=index%this.lineNumber+1;
         let nowBless:bless=this.blessListNew[index];
-        if(index>=this.lineNumber && !nowBless.getIsNew()){//老数据规整规划区域
+        if(!nowBless.getIsNew() && index>=this.lineNumber ){//老数据（打开留言板之前的数据）规整规划区域
           let beforeBless:bless=this.blessListNew[index-this.lineNumber];
           let indexOffset=beforeBless.getBless2LeftPx()+beforeBless.getBlessTextLength()+beforeBless.getBless2Before();
           nowBless.setBless2LeftPx(indexOffset);
         }
-        if(nowBless.getIsNew() && null==nowBless.getBless2TopPx()){//未设置Y坐标的新数据一律从最右边出现
-          nowBless.setBless2LeftPx(this.canvasWidth);
+        if(nowBless.getIsNew() && null==nowBless.getBless2TopPx()){//给新数据分配X,Y坐标
+          nowBless.setBless2LeftPx(this.canvasWidth);//X坐标：一律从最右侧出现
+          if(0==this.blessYavailable.length){//Y坐标：如果可分配行队列没有值，则按老数据方式规整使用
+            nowBless.setBless2TopPx(offsetNum*(this.blessY_px+this.blessFontSize));
+          }else{//如果可分配行队列有值，则分配到行
+            nowBless.setBless2TopPx(this.blessYavailable.shift()*(this.blessY_px+this.blessFontSize));
+          }
         }
-        if(null==nowBless.getBless2TopPx()){
+        if(!nowBless.getIsNew() && null==nowBless.getBless2TopPx()){//给老数据分配Y坐标
           nowBless.setBless2TopPx(offsetNum*(this.blessY_px+this.blessFontSize));
         }
         this.canvasContext.fillText(nowBless.getBlessText(),nowBless.getBless2LeftPx(),nowBless.getBless2TopPx());
         nowBless.setBless2LeftPx(nowBless.getBless2LeftPx()-this.speed);
         if(nowBless.getBless2LeftPx()+nowBless.getBlessTextLength()<0){
-            this.blessListNew.splice(index,1);
+          this.blessYavailable.push(this.blessListNew[index].getBless2TopPx()/(this.blessY_px+this.blessFontSize)); 
+          this.blessListNew.splice(index,1);//弹幕走出屏幕后直接从数组中删除
         }
     }
       this.canvasContext.restore();
       window.requestAnimationFrame(()=>this.blessDrawNew());
   }
   /**
-   * 新的初始化，需要MOCK对象
+   * 初始化老数据
    */
   initDataNew():void{
       this.blessListNew=[];
       for (var index = 0; index < 13; index++) {
         let blessOb:bless=new bless();
         blessOb.setBlessText(index+"已有弹幕",this.canvasContext);
-        blessOb.setBless2LeftPx(this.canvasWidth+15*Math.random());
+        blessOb.setBless2LeftPx(this.canvasWidth+20*Math.random());
         blessOb.setBless2Before(5+15*Math.random());//5~20px
         this.blessListNew.push(blessOb);     
       }  

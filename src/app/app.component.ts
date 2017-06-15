@@ -28,6 +28,7 @@ export class AppComponent implements OnInit{
   openlist:boolean;
   show:boolean;
   music:boolean;
+  currentPage:string;
   constructor(private router: Router){
     this.openlist=false;
     this.music=true;
@@ -39,6 +40,7 @@ export class AppComponent implements OnInit{
   }
 
   direct2(destiny:string):void{
+    this.currentPage=destiny;
     this.router.navigate([destiny]);
   }
   musicplay(mscctl:boolean):void{

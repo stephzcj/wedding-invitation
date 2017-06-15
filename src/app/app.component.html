@@ -24,31 +24,31 @@
         <li>
           <div class="roundBtn" style="display:block;">
             <span class="glyphicon glyphicon-home li-spacing" (click)="direct2('')"></span>
-            <img class="rotate" src="../assets/images/round01.png">
+            <img [class.rotate]="''!=currentPage" src="../assets/images/round01.png">
          </div>
         </li>
         <li>
           <div class="roundBtn" style="display:block;">
             <span class="glyphicon glyphicon-picture li-spacing" (click)="direct2('exhibition')"></span>
-            <img class="rotate" src="../assets/images/round01.png">
+            <img [class.rotate]="'exhibition'!=currentPage" src="../assets/images/round01.png">
          </div>
         </li>
         <li>
           <div class="roundBtn" style="display:block;">
             <span class="glyphicon glyphicon-envelope li-spacing" (click)="direct2('invitation')"></span>
-            <img class="rotate" src="../assets/images/round01.png">
+            <img [class.rotate]="'invitation'!=currentPage" src="../assets/images/round01.png">
          </div>
         </li>
         <li>
           <div class="roundBtn" style="display:block;">
             <span class="glyphicon glyphicon-map-marker li-spacing" (click)="direct2('navigation')"></span>
-            <img class="rotate" src="../assets/images/round01.png">
+            <img [class.rotate]="'navigation'!=currentPage" src="../assets/images/round01.png">
          </div>
         </li>
         <li>
           <div class="roundBtn" style="display:block;">
             <span class="glyphicon glyphicon-pencil li-spacing" (click)="direct2('msgboard')"></span>
-            <img class="rotate" src="../assets/images/round01.png">
+            <img [class.rotate]="'msgboard'!=currentPage" src="../assets/images/round01.png">
          </div>
         </li>
       </ul>
