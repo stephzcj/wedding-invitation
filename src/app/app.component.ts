@@ -29,12 +29,14 @@ export class AppComponent implements OnInit{
   show:boolean;
   music:boolean;
   currentPage:string;
+  WeixinJSBridge:any;
   constructor(private router: Router){
     this.openlist=false;
     this.music=true;
   }
   ngOnInit():void{
   }
+
   showLists():void{
     this.openlist=!this.openlist;
   }

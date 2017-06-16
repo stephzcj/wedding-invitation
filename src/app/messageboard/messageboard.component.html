@@ -1,3 +1,4 @@
+<div class="msgboard">
 <div class="panel panel-warning pan-compenent">
   <div class="panel-heading pan-title">留言签到</div>
   <div class="panel-body">
@@ -14,13 +15,14 @@
       <span class="input-group-addon" >祝福语</span>
       <input #guestBless type="text" class="form-control" placeholder="为我们祝福吧" [style.border]="inputbless">
     </div>
-      <button class="btn btn-default" (click)="addData()">签&nbsp;&nbsp;&nbsp;到</button>
+      <button class="btn btn-default btn-msg" (click)="addData()">签&nbsp;&nbsp;&nbsp;到</button>
   </div>
 </div>
 <div #blessArea class="blessArea">
     <canvas #blessCtl [width]=canvasWidth [height]=canvasHeight>
       你的浏览器不支持canvas，无法显示弹幕
     </canvas>
+</div>
 </div>
 
 

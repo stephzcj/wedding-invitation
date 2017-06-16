@@ -31,15 +31,15 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
       this.canvasHeight= this.blessArea.nativeElement.offsetHeight;//把canvas大小设置成与父元素一致
       this.canvasWidth= this.blessArea.nativeElement.offsetWidth;  //该设定必须在绘图之前完成，因此放在init中
       this.speed=1;
-      this.blessY_px=5;
+      this.blessY_px=8;
       this.blessX_px=10;
-      this.blessFontSize=20;
+      this.blessFontSize=22;
       this.lineNumber=Math.floor(this.canvasHeight/(this.blessY_px+this.blessFontSize));
   }
   ngAfterViewInit():void{
       this.canvasContext=this.blessCtl.nativeElement.getContext('2d');//获取canvas对象
       this.canvasContext.fillStyle = "white";
-      this.canvasContext.strokeStyle="white";
+      this.canvasContext.strokeStyle="black";
       this.canvasContext.lineJoin="round";
       this.canvasContext.font = this.blessFontSize+"px NSimSun,STFangsong";
       this.blessWidth=this.canvasWidth;
@@ -95,7 +95,7 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
         let blessOb:bless=new bless();
         blessOb.setBlessText(index+"已有弹幕",this.canvasContext);
         blessOb.setBless2LeftPx(this.canvasWidth+20*Math.random());
-        blessOb.setBless2Before(5+15*Math.random());//5~20px
+        blessOb.setBless2Before(5+25*Math.random());//5~30px
         this.blessListNew.push(blessOb);     
       }  
       
@@ -135,7 +135,7 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
   getBlessObject(gname:string,gnumber:string,gbless:string):bless{
       let blessOb:bless=new bless();
       blessOb.setBless2LeftPx(this.canvasWidth+15*Math.random());
-      blessOb.setBless2Before(5+15*Math.random());//5~20px
+      blessOb.setBless2Before(5+25*Math.random());//5~30px
       blessOb.setIsNew(true);
     if(null!=gbless && ""!=gbless && undefined!=gbless){
       blessOb.setBlessText(gname+"："+gbless,this.canvasContext);
