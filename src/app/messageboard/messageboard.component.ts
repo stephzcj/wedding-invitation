@@ -11,6 +11,8 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
   @ViewChild("guestName") guestName:ElementRef;
   @ViewChild("guestNum") guestNum:ElementRef;
   @ViewChild("guestBless") guestBless:ElementRef;
+  inputname:string;
+  inputpp:string;
   canvasHeight:number;//画布高
   canvasWidth:number;//画布宽
   canvasContext:CanvasRenderingContext2D;//canvas对象
@@ -24,6 +26,8 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
   blessFontSize:number;//弹幕字体大小
   blessYavailable:number[];//可用行的行号数组
   ngOnInit(){
+      this.inputname= "";
+      this.inputpp= "";
       this.canvasHeight= this.blessArea.nativeElement.offsetHeight;//把canvas大小设置成与父元素一致
       this.canvasWidth= this.blessArea.nativeElement.offsetWidth;  //该设定必须在绘图之前完成，因此放在init中
       this.speed=1;
@@ -102,14 +106,65 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
    */
   addData():void{
       let gname:string=this.guestName.nativeElement.value;
-      let gnumber:number=this.guestNum.nativeElement.value;
+      let gnumber:string=this.guestNum.nativeElement.value;
       let gbless:string=this.guestBless.nativeElement.value;
+      if(null==gname || ""==gname || undefined==gname){
+        this.inputname="1px solid red";
+        this.guestName.nativeElement.placeholder="姓名不能为空";
+      }
+      if(null==gnumber || ""==gnumber|| undefined==gnumber){
+        this.inputpp="1px solid red";
+        this.guestNum.nativeElement.placeholder="出席人数不能为空"
+      }
+      if(null!=gname && ""!=gname && undefined!=gname 
+      && null!=gnumber && ""!=gnumber && undefined!=gnumber
+      && null!=gbless && ""!=gbless && undefined!=gbless){//都不为空，既签到又发祝福
+        this.blessListNew.push(this.getBlessObject(gname,gnumber,gbless)); 
+        this.blessListNew.push(this.getBlessObject(gname,gnumber,"")); 
+      }else if(null!=gname && ""!=gname && undefined!=gname 
+      && null!=gnumber && ""!=gnumber && undefined!=gnumber
+      && (null==gbless || ""==gbless || undefined==gbless)){
+        //不发祝福纯签到
+        this.blessListNew.push(this.getBlessObject(gname,gnumber,"")); 
+      }
+
+  }
+  /**
+   * 设置对象
+   */
+  getBlessObject(gname:string,gnumber:string,gbless:string):bless{
       let blessOb:bless=new bless();
-      blessOb.setBlessText(gname+":"+gbless,this.canvasContext);
       blessOb.setBless2LeftPx(this.canvasWidth+15*Math.random());
       blessOb.setBless2Before(5+15*Math.random());//5~20px
       blessOb.setIsNew(true);
-      this.blessListNew.push(blessOb);  
+    if(null!=gbless && ""!=gbless && undefined!=gbless){
+      blessOb.setBlessText(gname+"："+gbless,this.canvasContext);
+      return blessOb;
+    }else if(null==gbless || ""==gbless || undefined==gbless){
+      blessOb.setBlessText(gname+" "+gnumber+"人已签到",this.canvasContext);
+      return blessOb;
+    }
+  }
+  /**
+   * 验证数据
+   */
+  verify():void{
+      let gname:string=this.guestName.nativeElement.value;
+      let gnumber:string=this.guestNum.nativeElement.value;
+      if(null!=gname && ""!=gname && undefined!=gname){
+        this.inputname="";
+        this.guestName.nativeElement.placeholder="输入你的名字";
+      }else{
+        this.inputname="1px solid red";
+        this.guestName.nativeElement.placeholder="姓名不能为空";
+      }
+      if(null!=gnumber && ""!=gnumber && undefined!=gnumber){
+        this.inputpp="";
+        this.guestNum.nativeElement.placeholder="输入出席人数";
+      }else{
+        this.inputpp="1px solid red";
+        this.guestNum.nativeElement.placeholder="人数不能为空";
+      }
   }
 
 }
