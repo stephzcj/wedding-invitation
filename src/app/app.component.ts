@@ -1,5 +1,6 @@
-import { Component ,Input,trigger,style,animate,transition,keyframes,OnInit,ViewChild,ElementRef} from '@angular/core';
+import { Component ,AfterViewInit,Input,trigger,style,animate,transition,keyframes,OnInit,ViewChild,ElementRef} from '@angular/core';
 import { Router } from '@angular/router';
+declare var $:any;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -23,7 +24,7 @@ import { Router } from '@angular/router';
     ])
    ]
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit,AfterViewInit{
   @ViewChild("musicontrol") musicontrol:ElementRef;
   openlist:boolean;
   show:boolean;
@@ -35,6 +36,15 @@ export class AppComponent implements OnInit{
     this.music=true;
   }
   ngOnInit():void{
+  }
+  ngAfterViewInit():void{
+    this.musicontrol.nativeElement.play();
+    window.document.addEventListener("DOMContentLoaded",function(){
+      $("#mp3")[0].play();
+    });  
+    window.document.addEventListener("WeixinJSBridgeReady", function () {
+      $("#mp3")[0].play();
+    }, false);
   }
 
   showLists():void{

@@ -1,5 +1,6 @@
 import { Component ,ViewChild,ElementRef,AfterViewInit,OnInit} from '@angular/core';
-import {bless} from './bless'
+import {bless} from './bless';
+declare var $: any;
 @Component({
   selector: 'messageboard',
   templateUrl: './messageboard.component.html',
@@ -46,6 +47,12 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
       this.blessYavailable=[];
       this.initDataNew();
       this.blessDrawNew();
+      $('#danmu,#feedback').on('show.bs.modal', function(){
+          $('#btnGroup').hide();
+      })
+      $('#danmu,#feedback').on('hidden.bs.modal', function(){
+          $('#btnGroup').show();
+      })   
   }
   /**
    * 用对象的方式来完成弹幕动画，比原方法灵活
@@ -94,8 +101,8 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
       for (var index = 0; index < 13; index++) {
         let blessOb:bless=new bless();
         blessOb.setBlessText(index+"已有弹幕",this.canvasContext);
-        blessOb.setBless2LeftPx(this.canvasWidth+20*Math.random());
-        blessOb.setBless2Before(5+25*Math.random());//5~30px
+        blessOb.setBless2LeftPx(this.canvasWidth+50*Math.random());//初始化距离最左边距离
+        blessOb.setBless2Before(50*Math.random());//弹幕间隙
         this.blessListNew.push(blessOb);     
       }  
       
@@ -107,27 +114,34 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
   addData():void{
       let gname:string=this.guestName.nativeElement.value;
       let gnumber:string=this.guestNum.nativeElement.value;
-      let gbless:string=this.guestBless.nativeElement.value;
       if(null==gname || ""==gname || undefined==gname){
         this.inputname="1px solid red";
         this.guestName.nativeElement.placeholder="姓名不能为空";
+        return;
       }
       if(null==gnumber || ""==gnumber|| undefined==gnumber){
         this.inputpp="1px solid red";
-        this.guestNum.nativeElement.placeholder="出席人数不能为空"
+        this.guestNum.nativeElement.placeholder="出席人数不能为空";
+        return;
       }
-      if(null!=gname && ""!=gname && undefined!=gname 
-      && null!=gnumber && ""!=gnumber && undefined!=gnumber
-      && null!=gbless && ""!=gbless && undefined!=gbless){//都不为空，既签到又发祝福
-        this.blessListNew.push(this.getBlessObject(gname,gnumber,gbless)); 
-        this.blessListNew.push(this.getBlessObject(gname,gnumber,"")); 
-      }else if(null!=gname && ""!=gname && undefined!=gname 
-      && null!=gnumber && ""!=gnumber && undefined!=gnumber
-      && (null==gbless || ""==gbless || undefined==gbless)){
-        //不发祝福纯签到
-        this.blessListNew.push(this.getBlessObject(gname,gnumber,"")); 
+      $("#feedback").modal("hide");
+      this.guestName.nativeElement.value="";
+      this.guestNum.nativeElement.value="";
+      this.blessListNew.push(this.getBlessObject(gname,gnumber,"")); 
+  }
+  /**
+   * 点击弹幕发送按钮，添加弹幕数据
+   * TODO:先使用mock，后期添加到数据库
+   */
+  addDanmu():void{
+      let gbless:string=this.guestBless.nativeElement.value;
+      if(null==gbless || ""==gbless|| undefined==gbless){
+        return;
       }
-
+      if(null!=gbless && ""!=gbless && undefined!=gbless){
+        this.guestBless.nativeElement.value="";
+        this.blessListNew.push(this.getBlessObject("","",gbless));
+      }
   }
   /**
    * 设置对象
@@ -135,13 +149,13 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
   getBlessObject(gname:string,gnumber:string,gbless:string):bless{
       let blessOb:bless=new bless();
       blessOb.setBless2LeftPx(this.canvasWidth+15*Math.random());
-      blessOb.setBless2Before(5+25*Math.random());//5~30px
+      blessOb.setBless2Before(5+25*Math.random());
       blessOb.setIsNew(true);
     if(null!=gbless && ""!=gbless && undefined!=gbless){
-      blessOb.setBlessText(gname+"："+gbless,this.canvasContext);
+      blessOb.setBlessText(gbless,this.canvasContext);
       return blessOb;
     }else if(null==gbless || ""==gbless || undefined==gbless){
-      blessOb.setBlessText(gname+" "+gnumber+"人已签到",this.canvasContext);
+      blessOb.setBlessText(gname+"  "+gnumber+"人出席",this.canvasContext);
       return blessOb;
     }
   }

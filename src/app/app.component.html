@@ -1,7 +1,7 @@
 
 <div class="container-fluid first-bg" >
   <div class="row" style="height:100%;">
-  <div class="btn-group"> 
+  <div [@flyIn] id="btnGroup" class="btn-group"> 
     <!--music-->
       <div class="roundBtn" style="display:block;">
           <div [ngSwitch]="music">
@@ -54,7 +54,7 @@
       </ul>
   </div>
   <div class="col-xs-12" style="height:100%;padding-right:0px;padding-left:0px;width:100%;">
-    <audio #musicontrol autoplay="autoplay" loop="loop" >
+    <audio #musicontrol id="mp3" loop="loop" >
       <source src="../assets/audio/HLWILY.mp3" type="audio/mp3" />
       Your browser does not support the audio element.
     </audio>

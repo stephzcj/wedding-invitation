@@ -1,28 +1,58 @@
 <div class="msgboard">
-<div class="panel panel-warning pan-compenent">
-  <div class="panel-heading pan-title">留言签到</div>
-  <div class="panel-body">
-    <div class="input-group input-class">
-      <span class="input-group-addon" >姓&nbsp;&nbsp;&nbsp;名</span>
-      <input #guestName type="text" class="form-control" placeholder="输入你的名字" [style.border]="inputname" (blur)="verify()">
-    </div>
-    <div class="input-group input-class">
-      <span class="input-group-addon" >携家人</span>
-      <input #guestNum type="text" class="form-control" placeholder="输入出席人数" [style.border]="inputpp" (blur)="verify()">
-      <span class="input-group-addon" >人</span>
-    </div>
-    <div class="input-group input-class">
-      <span class="input-group-addon" >祝福语</span>
-      <input #guestBless type="text" class="form-control" placeholder="为我们祝福吧">
-    </div>
-      <button class="btn btn-default btn-msg" (click)="addData()">签&nbsp;&nbsp;&nbsp;到</button>
-  </div>
-</div>
-<div #blessArea class="blessArea">
+  <div #blessArea class="blessArea">
     <canvas #blessCtl [width]=canvasWidth [height]=canvasHeight>
       你的浏览器不支持canvas，无法显示弹幕
     </canvas>
 </div>
+<div class="modal fade " id="feedback" tabindex="-1" role="dialog" >
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modalbg">
+      <div class="modal-header headcss">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">回执</h4>
+      </div>
+      <div class="modal-body" style="padding-bottom:0;">
+        <div class="input-group input-class">
+          <span class="input-group-addon" >姓&nbsp;&nbsp;&nbsp;名</span>
+          <input #guestName type="text" class="form-control" placeholder="输入你的名字" [style.border]="inputname" (blur)="verify()">
+        </div>
+        <div class="input-group input-class">
+          <span class="input-group-addon" >携家人</span>
+          <input #guestNum type="text" class="form-control" placeholder="输入出席人数" [style.border]="inputpp" (blur)="verify()">
+          <span class="input-group-addon" >人</span>
+        </div>
+      </div>
+      <div class="modal-footer" style="text-align: center;">
+        <button type="button" class="btn btn-default btn-msg2" data-dismiss="modal">关闭</button>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-primary btn-msg2" (click)="addData()">发送</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade " id="danmu" tabindex="-1" role="dialog" >
+  <div class="modal-dialog " role="document">
+    <div class="modal-content modalbg">
+      <div class="modal-body" style="padding-bottom:0;">
+        <div class="input-group input-class">
+          <input #guestBless type="text" class="form-control"  placeholder="为我们祝福吧">
+          <span class="input-group-addon" (click)="addDanmu()" data-dismiss="modal">发送</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-default btn-msg" data-toggle="modal" data-target="#feedback">
+  回&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;执
+</button>
+<button type="button" class="btn btn-default btn-msg" data-toggle="modal" data-target="#danmu">
+  留&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;言
+</button>
+
+
 </div>
 
 
