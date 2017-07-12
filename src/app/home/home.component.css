@@ -19,7 +19,7 @@
         -o-transform:scale(1,1); 	/* Opera */
         }
 }
-.fadein{
+.big2small{
     width: 100%;
     height:100%;
     animation: big2little 1s ease-in-out ;

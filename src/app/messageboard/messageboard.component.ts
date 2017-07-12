@@ -50,10 +50,10 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
       this.blessYavailable=[];
       this.initData();
       this.blessDraw();
-      $('#danmu,#feedback').on('show.bs.modal', function(){
+      $('#danmu,#feedback').on('show.bs.modal', function(){//模态出现时触发
           $('#btnGroup').hide();
       })
-      $('#danmu,#feedback').on('hidden.bs.modal', function(){
+      $('#danmu,#feedback').on('hidden.bs.modal', function(){//模态隐藏时触发
           $('#btnGroup').show();
       })   
   }
@@ -87,7 +87,8 @@ export class MessageBoardComponent implements AfterViewInit,OnInit{
           nowBless.setBless2TopPx(offsetNum*(this.blessY_px+this.blessFontSize));
         }
         this.canvasContext.fillText(nowBless.getBlessText(),nowBless.getBless2LeftPx(),nowBless.getBless2TopPx());
-        nowBless.setBless2LeftPx(nowBless.getBless2LeftPx()-this.speed);
+        //下面取整的目的是为了提升性能，当画一个没有整数坐标点的对象时会发生子像素渲染
+        nowBless.setBless2LeftPx(Math.floor(nowBless.getBless2LeftPx()-this.speed));
         if(nowBless.getBless2LeftPx()+nowBless.getBlessTextLength()<0){
           this.blessYavailable.push(this.blessList[index].getBless2TopPx()/(this.blessY_px+this.blessFontSize)); 
           this.blessList.splice(index,1);//弹幕走出屏幕后直接从数组中删除
