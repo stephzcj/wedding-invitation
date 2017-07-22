@@ -1,29 +1,774 @@
-.exhibition{
+.home{   /* canvas层 */
+    position: absolute;
+    left:0;
+    top:0;
     width: 100%;
     height:100%;
+    z-index: 999;
+}
+.pic-div{
+    position: absolute;
+    left:0;
+    top:0;
+    width: 100%;
+    height:100%;
+    z-index: 1;
+    background-color: rgb(0,0,0);
 }
 
-@keyframes big2little{
+
+@keyframes a-five2seven{
     0%{
-        transform:scale(5,5);
-        -ms-transform:scale(5,5); 	/* IE 9 */
-        -moz-transform:scale(5,5); 	/* Firefox */
-        -webkit-transform:scale(5,5); /* Safari 和 Chrome */
-        -o-transform:scale(5,5); 	/* Opera */
-        }  
+        position: absolute;
+        left:-1000px;
+        top:30%;
+        opacity: 0;
+        width:1050px;
+        height:700px;
+        } 
+    35%{
+        position: absolute;
+        left:0px;
+        top:30%;
+        opacity: 0.7;
+        width:525px;
+        height:350px;
+    } 
+    85%{
+        position: absolute;
+        left:0px;
+        top:35%;
+        opacity: 1;
+         width:360px;
+        height:240px;
+    } 
     100%{
-        transform:scale(1,1);
-        -ms-transform:scale(1,1); 	/* IE 9 */
-        -moz-transform:scale(1,1); 	/* Firefox */
-        -webkit-transform:scale(1,1); /* Safari 和 Chrome */
-        -o-transform:scale(1,1); 	/* Opera */
+        position: absolute;
+        left:10%;
+        top:30%;
+        opacity: 0;
+        width:550px;
+        height:350px;
         }
 }
-.big2small{
-    width: 100%;
-    height:100%;
-    animation: big2little 1s ease-in-out ;
-    -moz-animation: big2little 1s ease-in-out ;
-    -webkit-animation: big2little 1s ease-in-out ;
-    -o-animation: big2little 1s ease-in-out ;
+
+
+.five2seven{
+    position: absolute;
+        left:10%;
+        top:30%;
+        opacity: 0;
+        width:550px;
+        height:350px;
+        animation: a-five2seven 15s ease-in-out ;
+        -webkit-animation: a-five2seven 15s ease-in-out ; 
 }
+
+@keyframes a-os1{
+    0%{
+        position: absolute;
+        left:10%;
+        top:0px;
+        opacity: 0;
+        width:150px;
+        height:100px;
+    }
+    30%{
+        position: absolute;
+        left:10%;
+        top:10%;
+        opacity: 1;
+        width:150px;
+        height:100px;
+    }
+    75%{
+        position: absolute;
+        left:10%;
+        top:10%;
+        opacity: 1;
+        width:150px;
+        height:100px;
+    }
+    100%{
+        position: absolute;
+        left:10%;
+        top:0px;
+        opacity: 0;
+        width:150px;
+        height:100px;
+    }
+}
+.os1{
+        position: absolute;
+        left:10%;
+        top:0px;
+        opacity: 0;
+        width:150px;
+        height:100px;
+        animation: a-os1 9s ease-in-out 5s;
+        -webkit-animation: a-os1 9s ease-in-out 5s; 
+}
+@keyframes a-os2{
+    0%{
+        position: absolute;
+        left:50%;
+        top:90%;
+        opacity: 0;
+        width:150px;
+        height:100px;
+    }
+    30%{
+        position: absolute;
+        left:50%;
+        top:80%;
+        opacity: 1;
+        width:150px;
+        height:100px;
+    }
+    75%{
+        position: absolute;
+        left:50%;
+        top:80%;
+        opacity: 1;
+        width:150px;
+        height:100px;
+    }
+    100%{
+        position: absolute;
+        left:50%;
+        top:90%;
+        opacity: 0;
+        width:150px;
+        height:100px;
+    }
+}
+.os2{
+        position: absolute;
+        left:50%;
+        top:90%;
+        opacity: 0;
+        width:150px;
+        height:100px;
+        animation: a-os2 5s ease-in-out 9s;
+        -webkit-animation: a-os2 5s ease-in-out 9s; 
+}
+
+/*湖边面对面图  */
+@keyframes a-seven2six{
+    0%{
+        position: absolute;
+        left:720px;
+        top:-300px;
+        opacity: 0;
+        width:720px;
+        height:480px;
+        } 
+    40%{
+        position: absolute;
+        left:0px;
+        top:20%;
+        opacity: 0.6;
+        width:360px;
+        height:240px;
+    } 
+    75%{
+        position: absolute;
+        left:0px;
+        top:15%;
+        opacity: 1;
+        width:360px;
+        height:240px;
+    } 
+    100%{
+        position: absolute;
+        left:-150px;
+        top:20%;
+        opacity: 0;
+        width:525px;
+        height:350px;
+        }
+}
+.seven2six{
+        position: absolute;
+        left:-10%;
+        top:20%;
+        opacity: 0;
+        width:550px;
+        height:350px;
+        animation: a-seven2six 15s ease-in-out 11s;
+        -webkit-animation: a-seven2six 15s ease-in-out 11s; 
+}
+@keyframes a-os3{
+    0%{
+        position: absolute;
+        left:2%;
+        top:60%;
+        opacity: 0;
+        width:225px;
+        height:150px;
+    }
+    30%{
+        position: absolute;
+        left:10%;
+        top:60%;
+        opacity: 1;
+        width:225px;
+        height:150px;
+    }
+    75%{
+        position: absolute;
+        left:10%;
+        top:60%;
+        opacity: 1;
+        width:225px;
+        height:150px;
+    }
+    100%{
+        position: absolute;
+        left:50%;
+        top:60%;
+        opacity: 0;
+        width:225px;
+        height:150px;
+    }
+}
+.os3{
+        position: absolute;
+        left:50%;
+        top:60%;
+        opacity: 0;
+        width:225px;
+        height:150px;
+        animation: a-os3 10s ease-in-out 15s;
+        -webkit-animation: a-os3 10s ease-in-out 15s; 
+}
+@keyframes a-os4{
+    0%{
+        position: absolute;
+        left:100%;
+        top:75%;
+        opacity: 0;
+        width:225px;
+        height:150px;
+    }
+    30%{
+        position: absolute;
+        left:30%;
+        top:75%;
+        opacity: 1;
+        width:225px;
+        height:150px;
+    }
+    75%{
+        position: absolute;
+        left:30%;
+        top:75%;
+        opacity: 1;
+        width:225px;
+        height:150px;
+    }
+    100%{
+        position: absolute;
+        left:-100px;
+        top:75%;
+        opacity: 0;
+        width:225px;
+        height:150px;
+    }
+}
+.os4{
+        position: absolute;
+        left:-100px;
+        top:75%;
+        opacity: 0;
+        width:225px;
+        height:150px;
+        animation: a-os4 8s ease-in-out 17s;
+        -webkit-animation: a-os4 8s ease-in-out 17s; 
+}
+
+
+
+
+
+
+
+
+
+/*夕阳下牵手图  */
+@keyframes a-six2three{
+     0%{
+        position: absolute;
+        left:-500px;
+        top:10%;
+        opacity: 0.3;
+        width:525px;
+        height:350px;
+    } 
+    46%{
+        position: absolute;
+        left:525px;
+        top:10%;
+        opacity: 1;
+        width:525px;
+        height:350px;
+    }
+    47%{
+        position: absolute;
+        left:525px;
+        top:10%;
+        opacity: 0;
+        width:525px;
+        height:350px;
+    }
+    50%{
+        position: absolute;
+        left:0px;
+        top:20%;
+        opacity: 0;
+        width:360px;
+        height:240px;
+    }
+    55%{
+        position: absolute;
+        left:0px;
+        top:20%;
+        opacity: 1;
+        width:360px;
+        height:240px;
+    } 
+    76%{
+        position: absolute;
+        left:0px;
+        top:20%;
+        opacity: 1;
+        width:360px;
+        height:240px;
+    } 
+    100%{
+        position: absolute;
+        left:-100px;
+        top:20%;
+        opacity: 0;
+         width:720px;
+        height:480px;
+        }
+}
+.six2three{
+        position: absolute;
+        left:-100px;
+        top:20%;
+        opacity: 0;
+        width:720px;
+        height:480px;
+        animation: a-six2three 20s linear 23s;
+        -webkit-animation: a-six2three 20s linear 23s; 
+}
+
+@keyframes a-os5{
+    0%{
+        position: absolute;
+        left:25%;
+        top:75%;
+        opacity: 0;
+        width:180px;
+        height:120px;
+    }
+    30%{
+        position: absolute;
+        left:25%;
+        top:75%;
+        opacity: 1;
+        width:180px;
+        height:120px;
+    }
+    75%{
+        position: absolute;
+        left:25%;
+        top:75%;
+        opacity: 1;
+        width:180px;
+        height:120px;
+    }
+    100%{
+        position: absolute;
+        left:25%;
+        top:75%;
+        opacity: 0;
+        width:180px;
+        height:120px;
+    }
+}
+.os5{
+        position: absolute;
+        left:25%;
+        top:75%;
+        opacity: 0;
+        width:180px;
+        height:120px;
+        animation: a-os5 2s ease-in-out 24s;
+        -webkit-animation: a-os5 2s ease-in-out 24s; 
+}
+
+@keyframes a-os6{
+    0%{
+        position: absolute;
+        left:25%;
+        top:75%;
+        opacity: 0;
+        width:180px;
+        height:120px;
+    }
+    30%{
+        position: absolute;
+        left:25%;
+        top:75%;
+        opacity: 1;
+        width:180px;
+        height:120px;
+    }
+    75%{
+        position: absolute;
+        left:25%;
+        top:75%;
+        opacity: 1;
+        width:180px;
+        height:120px;
+    }
+    100%{
+        position: absolute;
+        left:25%;
+        top:75%;
+        opacity: 0;
+        width:180px;
+        height:120px;
+    }
+}
+.os6{
+        position: absolute;
+        left:25%;
+        top:75%;
+        opacity: 0;
+        width:180px;
+        height:120px;
+        animation: a-os6 3s ease-in-out 26s;
+        -webkit-animation: a-os6 3s ease-in-out 26s; 
+}
+
+@keyframes a-os7{
+    0%{
+        position: absolute;
+        left:20%;
+        top:35%;
+        opacity: 0;
+        width:225px;
+        height:150px;
+    }
+    30%{
+        position: absolute;
+        left:20%;
+        top:35%;
+        opacity: 1;
+        width:225px;
+        height:150px;
+    }
+    75%{
+        position: absolute;
+        left:20%;
+        top:35%;
+        opacity: 1;
+        width:225px;
+        height:150px;
+    }
+    100%{
+        position: absolute;
+        left:20%;
+        top:35%;
+        opacity: 0;
+        width:225px;
+        height:150px;
+    }
+}
+.os7{
+        position: absolute;
+        left:20%;
+        top:35%;
+        opacity: 0;
+        width:225px;
+        height:150px;
+        animation: a-os7 3s ease-in-out 30s;
+        -webkit-animation: a-os7 3s ease-in-out 30s; 
+}
+
+@keyframes a-os8{
+    0%{
+        position: absolute;
+        left:25%;
+        top:70%;
+        opacity: 0;
+        width:225px;
+        height:150px;
+    }
+    30%{
+        position: absolute;
+        left:25%;
+        top:70%;
+        opacity: 1;
+        width:225px;
+        height:150px;
+    }
+    75%{
+        position: absolute;
+        left:25%;
+        top:70%;
+        opacity: 1;
+        width:225px;
+        height:150px;
+    }
+    100%{
+        position: absolute;
+        left:25%;
+        top:70%;
+        opacity: 0;
+        width:225px;
+        height:150px;
+    }
+}
+.os8{
+        position: absolute;
+        left:25%;
+        top:70%;
+        opacity: 0;
+        width:225px;
+        height:150px;
+        animation: a-os8 5s ease-in-out 34s;
+        -webkit-animation: a-os8 5s ease-in-out 34s; 
+}
+
+
+/*照片快速切换  */
+@keyframes a-three2four{
+    0%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+    }
+    40%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 1;
+        width:100%;
+        height:100%;
+    }
+    75%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 1;
+        width:100%;
+        height:100%;
+    }
+    100%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+    }
+}
+.three2four{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+        animation: a-three2four 3s linear 43s;
+        -webkit-animation: a-three2four 3s linear 43s; 
+}
+
+
+@keyframes a-four2eight{
+    0%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+    }
+    40%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 1;
+        width:100%;
+        height:100%;
+    }
+    75%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 1;
+        width:100%;
+        height:100%;
+    }
+    100%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+    }
+}
+.four2eight{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+        animation: a-four2eight 3s linear 46s;
+        -webkit-animation: a-four2eight 3s linear 46s; 
+}
+
+
+
+@keyframes a-eight2nine{
+    0%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+    }
+    40%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 1;
+        width:100%;
+        height:100%;
+    }
+    75%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 1;
+        width:100%;
+        height:100%;
+    }
+    100%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+    }
+}
+.eight2nine{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+        animation: a-eight2nine 3s linear 51s;
+        -webkit-animation: a-eight2nine 3s linear 51s; 
+}
+
+
+
+@keyframes a-nine2invitation{
+    0%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+    }
+    40%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 1;
+        width:100%;
+        height:100%;
+    }
+    75%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 1;
+        width:100%;
+        height:100%;
+    }
+    100%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+    }
+}
+.nine2invitation{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+        animation: a-nine2invitation 3s linear 54s;
+        -webkit-animation: a-nine2invitation 3s linear 54s; 
+}
+
+@keyframes a-invitation{
+    0%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 0;
+        width:100%;
+        height:100%;
+    }
+    1%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 1;
+        width:100%;
+        height:100%;
+    }
+    100%{
+        position: absolute;
+        left:0px;
+        top:0px;
+        opacity: 1;
+        width:100%;
+        height:100%;
+    }
+}
+.p10{
+    position: absolute;
+    left:0px;
+    top:0px;
+    opacity: 0;
+    width:100%;
+    height:100%;
+}
+.invitation{
+   
+    animation: a-invitation 300s linear 57s;
+    -webkit-animation: a-invitation 300s linear 57s; 
+}
+

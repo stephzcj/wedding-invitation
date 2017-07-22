@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit,AfterViewInit{
   }
   ngAfterViewInit():void{
     this.canvasContext=this.showctl.nativeElement.getContext('2d');//获取canvas对象
+    //this.canvasContext.strokeRect(1,1,300,500);
   }
 
 
